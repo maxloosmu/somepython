@@ -16,7 +16,8 @@ print(d.items())
 print(sorted(d.items()))
 
 # lambda function, as used for key, chooses the second element of tuple in `d.items()` for sort
-print(sorted(d.items(), key=lambda x : x[1]))
-e = OrderedDict(sorted(d.items(), key=lambda x : x[1]))
-print(e)
+e = sorted(d.items(), key=lambda x : x[1])
+print(f"e = {e}")
+f = OrderedDict(sorted(d.items(), key=lambda x : x[1]))
+print(f"{f}\n")
 

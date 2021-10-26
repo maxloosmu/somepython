@@ -1,6 +1,12 @@
 
 
 cd C:\Users\Max\src\somepython
+dos2unix 002.py
+
+
+
+
+
 
 
 
