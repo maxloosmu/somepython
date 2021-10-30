@@ -1,7 +1,7 @@
 
 
-cd C:\Users\Max\src\somepython
-dos2unix 003.py
+cd C:\Users\Max\src\some\somepython
+dos2unix 004.py
 
 
 

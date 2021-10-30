@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""https://sebhastian.com/list-comprehension-javascript/
+"""
+Python and JavaScript List Comprehension
+https://sebhastian.com/list-comprehension-javascript/
 """
 
 pets = ["cat", "bird", "fish", "dog"]
