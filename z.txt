@@ -1,7 +1,15 @@
 
 
+Missing section separator
+
+
 cd C:\Users\Max\src\some\somepython
-dos2unix 005.py
+dos2unix 006.py
+
+
+
+
+
 
 
 
