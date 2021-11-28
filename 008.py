@@ -4,8 +4,8 @@ class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
-    def __repr__(self):
-        return f"{self.name}, {self.age} years old"
+    def printNameAge(self):
+        print(f"{self.name}, {self.age} years old")
 class PersonWithPhone(Person):
     def __init__(self, name, age, phone):
         super().__init__(name, age)
@@ -21,4 +21,5 @@ class PersonWithSecondPhone(PersonWithPhone):
 jonathon = PersonWithSecondPhone("Jon", 8, 1111, 2222)
 jonathon.secondPhoneNum()
 jonathon.phoneNum()
-print(jonathon)
+jonathon.printNameAge()
+
