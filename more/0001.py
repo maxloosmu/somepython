@@ -24,6 +24,7 @@ class Account:
         return self.balance
 a = Account("aaa", 111)
 b = Account("bbb", 222)
+"""
 print(a)
 print(b)
 print(vars(a))
@@ -34,3 +35,60 @@ print(type(a.deposit))
 print(type(b.deposit))
 print(type(a).deposit)
 print(type(b).deposit)
+"""
+
+# https://www.programiz.com/python-programming/methods/built-in/super
+
+class Animal0(object):
+    def __init__(self, animal_type):
+        print('Animal Type:', animal_type)
+class Mammal0(Animal0):
+    def __init__(self):
+        # call superclass
+        super().__init__('Mammal')
+        print('Mammals give birth directly')
+# this code prints only when it initialises/constructs
+# Animal and Mammal objects
+dog = Mammal0()
+
+class Mammal1(object):
+    def __init__(self, mammalName):
+        print(mammalName, 'is a warm-blooded animal.')
+class Dog1(Mammal1):
+    def __init__(self):
+        print(f'{type(self).__name__} has four legs.')
+        # Mammal.__init__(self, 'Dog')
+        super().__init__('Dog')
+# this code is similar to the previous
+d1 = Dog1()
+print('')
+
+class Animal:
+    def __init__(self, Animal):
+        print(Animal, 'is an animal.');
+
+class Mammal(Animal):
+    def __init__(self, mammalName):
+        print(mammalName, 'is a warm-blooded animal.')
+        super().__init__(mammalName)
+
+class NonWingedMammal(Mammal):
+    def __init__(self, NonWingedMammal):
+        print(NonWingedMammal, "can't fly.")
+        super().__init__(NonWingedMammal)
+
+class NonMarineMammal(Mammal):
+    def __init__(self, NonMarineMammal):
+        print(NonMarineMammal, "can't swim.")
+        super().__init__(NonMarineMammal)
+
+class Dog(NonMarineMammal, NonWingedMammal):
+    def __init__(self):
+        print('Dog has 4 legs.');
+        super().__init__('Dog')
+
+d = Dog()
+print('')
+bat = NonMarineMammal('Bat')
+print('')
+print(Dog.__mro__)
