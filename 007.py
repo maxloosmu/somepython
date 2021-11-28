@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+'''
+https://realpython.com/inner-functions-what-are-they-good-for/
+'''
 
 greet = "global hello"
 n = 999
