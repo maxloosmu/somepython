@@ -3,6 +3,7 @@
 2021 Python Distilled
 Chapter 7 Classes and Object-Oriented Programming
 """
+import time
 
 # https://stackoverflow.com/questions/33097143/what-is-the-difference-between-r-and-r-in-python
 # https://stackoverflow.com/questions/9455111/define-a-method-outside-of-class-definition/9455442
@@ -13,15 +14,33 @@ class Account:
         self.owner = owner
         self.balance = balance
     def __repr__(self):
-        return f'Account({self.owner!r}, {self.balance!r})\
-            \n Account({self.owner!s}, {self.balance!s})\
-            \nAccount({self.owner}, {self.balance})'
+        return f'{type(self).__name__}({self.owner!r}, {self.balance!r})\
+            \n {type(self).__name__}({self.owner!s}, {self.balance!s})\
+            \n{type(self).__name__}({self.owner}, {self.balance})'
     def deposit(self, amount):
         self.balance += amount
     def withdraw(self, amount):
         self.balance -= amount
     def inquiry(self):
         return self.balance
+    @classmethod
+    def from_xml(cls, data):
+        from xml.etree.ElementTree import XML
+        doc = XML(data)
+        return cls(doc.findtext('owner'), \
+            float(doc.findtext('amount')))
+data = '''
+<account>
+    <owner>Guido</owner>
+    <amount>1000.0</amount>
+</account>
+'''
+class EvilAccount(Account):
+    pass
+c = Account.from_xml(data)
+d = EvilAccount.from_xml(data)
+print(c)
+print(d)
 a = Account("aaa", 111)
 b = Account("bbb", 222)
 """
@@ -36,6 +55,34 @@ print(type(b.deposit))
 print(type(a).deposit)
 print(type(b).deposit)
 """
+class Date:
+    datefmt = '{year}-{month:02d}-{day:02d}'
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+    def __str__(self):
+        return self.datefmt.format(year=self.year,\
+            month=self.month, day=self.day)
+@classmethod
+def from_timestamp(cls, ts):
+    tm = time.localtime(ts)
+    return cls(tm.tm_year, tm.tm_mon, tm.tm_mday)
+@classmethod
+def today(cls):
+    return cls.from_timestamp(time.time())
+class MDYDate(Date):
+    datefmt = '{month}/{day}/{year}'
+class DMYDate(Date):
+    datefmt = '{day}/{month}/{year}'
+e = Date(1967, 4, 9)
+f = MDYDate(1967, 4, 9)
+g = DMYDate(1967, 4, 9)
+print(e) # 1967-04-09
+print(f) # 4/9/1967
+print(g) # 9/4/1967
+
+
 
 # https://www.programiz.com/python-programming/methods/built-in/super
 
@@ -86,9 +133,16 @@ class Dog(NonMarineMammal, NonWingedMammal):
     def __init__(self):
         print('Dog has 4 legs.');
         super().__init__('Dog')
-
+"""
 d = Dog()
 print('')
 bat = NonMarineMammal('Bat')
 print('')
 print(Dog.__mro__)
+"""
+
+def must_use_keyword(a, *, b):
+    return a + b
+print(must_use_keyword(1, b=2))
+
+

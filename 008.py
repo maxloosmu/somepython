@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 class Person:
+    species = "Homo Sapiens"
     def __init__(self, name, age):
         self.name = name
         self.age = age
@@ -22,4 +23,12 @@ jonathon = PersonWithSecondPhone("Jon", 8, 1111, 2222)
 jonathon.second_phone_num()
 jonathon.phone_num()
 jonathon.print_name_age()
+jen = Person("Jen", 60)
+print(Person.species)
+print(jen.species)
+jen.species = "Woman"
+print(Person.species)
+print(jen.species)
+
+
 

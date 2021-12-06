@@ -6,7 +6,7 @@ Missing section separator
 cd C:\Users\Max\src\some\somepython
 dos2unix 008.py
 
-
+cd C:\Users\Max\src\some\somepython\more
 
 
 
